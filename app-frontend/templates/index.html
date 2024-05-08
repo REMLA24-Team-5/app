@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing URL Checker</title>
+  <link rel="stylesheet" href="../stylesheets/style.css"/>
+</head>
+<body>
+  <div id="container">
+    <h2>Phishing URL Checker</h2>
+    <form method="post">
+        <input type="text" name="url_input" id="url_input" placeholder="Enter URL...">
+        <input id="checkButton" type="submit" value="Check">
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('checkButton').addEventListener('click', async () => {
+      const url = document.getElementById('urlInput').value.trim();
+      if (url === '') {
+        alert('Please enter a URL.');
+        return;
+      }
+    }
+  </script>
+</body>
+</html>
