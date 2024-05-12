@@ -1,6 +1,9 @@
 FROM python:3.10-slim
 WORKDIR /app
 COPY . /app
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
 RUN pip install -r requirements.txt
 EXPOSE 5000
 ENV model_service_url localhost:3000
