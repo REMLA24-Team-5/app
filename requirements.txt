@@ -1,3 +1,2 @@
 flask==3.0.3
-git
 lib-version @ git+https://github.com/REMLA24-Team-5/lib-version
