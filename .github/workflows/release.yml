@@ -6,9 +6,8 @@ on:
 jobs:
   build:
     permissions:
-      contents: read
+      contents: write
       packages: write
-      attestations: write
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
@@ -47,3 +46,6 @@ jobs:
             --tag $IMG:${{ env.version_major }}.latest \
             --tag $IMG:latest
           docker push --all-tags $IMG
+
+      - name: Release to GitHub
+        uses: softprops/action-gh-release@v1
