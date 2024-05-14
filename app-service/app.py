@@ -16,4 +16,4 @@ def index():
     if request.method == 'POST':
         url = request.form['url_input']
         url_info = connector_to_model_service.get_url_data(url)
-        return render_template('index.html', url_data=url_info)
+        return render_template('index.html', url_data=url_info["prediction"])
