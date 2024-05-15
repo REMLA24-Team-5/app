@@ -1,5 +1,5 @@
 import os
-
+import requests
 
 class Connector:
     def __init__(self):
@@ -10,8 +10,6 @@ class Connector:
         self.model_service_url = os.environ["model_service_url"]
         print(f"Using model service url: {self.model_service_url}")
 
-
     def get_url_data(self, url: str) -> str:
-        print(f"Getting phising data for {url}")
-        #r = requests.get(f"{model_service_url}/phising_data?url={url}")
-        return "template"
+        response = requests.post(f"{self.model_service_url}/predict", json={"url": url})  
+        return response.json()
