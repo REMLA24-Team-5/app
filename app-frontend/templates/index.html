@@ -5,26 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phishing URL Checker</title>
   <link rel="stylesheet" href="/app/app-frontend/stylesheets/style.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div id="container">
-    <h2>Phishing URL Checker</h2>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h2>Phishing URL Checker</h2>
       <p>Version: {{ version }}</p>
-    <form method="post">
-        <input type="text" name="url_input" id="url_input" placeholder="Enter URL...">
-        <input id="checkButton" type="submit" value="Check">
+    </div>
+    <form method="post" class="form-horizontal">
+      <div class="form-group">
+        <label for="url_input" class="control-label col-sm-2">Enter URL:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="url_input" id="url_input" placeholder="Enter URL...">
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit URL</button>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Do you think this is phishing?</h4>
+            </div>
+            <div class="modal-body">
+              <p>Indicate below if you think the URL is phishing. You can then compare your understanding of phishing URLs with the prediction of the model.</p>
+            </div>
+            <div class="modal-footer">
+              <button id="yesButton" class="btn btn-success" type="submit">I think it's phishing</button>
+              <button id="noButton" class="btn btn-danger" type="submit">It is innocent</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </form>
-    <div id="result"></div>
+    <div id="result" class="alert alert-info text-center" role="alert" style="margin-top: 20px;">{{ url_data }}</div>
   </div>
 
   <script>
     document.getElementById('checkButton').addEventListener('click', async () => {
-      const url = document.getElementById('urlInput').value.trim();
+      const url = document.getElementById('url_input').value.trim();
       if (url === '') {
         alert('Please enter a URL.');
         return;
       }
-    }
+      // Add more JavaScript functionality here as needed.
+    });
   </script>
 </body>
 </html>
