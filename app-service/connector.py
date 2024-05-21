@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 
 class Connector:
     def __init__(self):
@@ -12,5 +13,8 @@ class Connector:
 
     def get_url_data(self, url: str) -> str:
         print(f"{self.model_service_url}/predict")
-        response = requests.post(f"{self.model_service_url}/predict", json={"url": url})  
-        return response.json()
+        try:
+            response = requests.post(f"{self.model_service_url}/predict", json={"url": url}) 
+            return response.json()
+        except:
+            return json.loads('{ "prediction":"Uknown"}')
