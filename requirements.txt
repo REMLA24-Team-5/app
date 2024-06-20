@@ -1,4 +1,4 @@
 flask==3.0.3
 requests==2.31.0
 prometheus-client==0.20.0
-lib-version @ git+https://github.com/REMLA24-Team-5/lib-version@v0.1.4
+lib-version @ git+https://github.com/REMLA24-Team-5/lib-version@v0.1.7
