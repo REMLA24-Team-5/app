@@ -49,7 +49,7 @@ def index():
 
                 url_info = connector_to_model_service.get_url_data(url)
 
-                if url_info["prediction"] == "phishing":
+                if url_info["prediction"] == "Phishing":
                     PHISHING_COUNT.inc()
                     if user_thinks_phishing:
                         # User guessed the same as model
@@ -58,7 +58,7 @@ def index():
                     else:
                         # User did not
                         USER_GUESS_AGREE_GAUGE.set(0)
-                elif url_info["prediction"] == "legitimate":
+                elif url_info["prediction"] == "Legitimate":
                     if not user_thinks_phishing:
                         # User guessed the same as model
                         USER_SAME_GUESS_COUNT.inc()
